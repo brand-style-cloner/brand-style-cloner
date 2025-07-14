@@ -1,0 +1,116 @@
+{
+  "projects": {
+    "api": {
+      "name": "brand-style-cloner-api",
+      "path": "apps/api",
+      "type": "node",
+      "buildCommand": "npm run build",
+      "startCommand": "npm start",
+      "port": 3002,
+      "environment": {
+        "NODE_ENV": "production",
+        "PORT": "3002"
+      },
+      "platforms": {
+        "railway": {
+          "recommended": true,
+          "buildCommand": "npm install && npm run build",
+          "startCommand": "npm start"
+        },
+        "render": {
+          "recommended": true,
+          "buildCommand": "npm install && npm run build",
+          "startCommand": "npm start"
+        },
+        "vercel": {
+          "recommended": false,
+          "note": "Not recommended for Express.js APIs"
+        }
+      }
+    },
+    "web": {
+      "name": "brand-style-cloner-web",
+      "path": "apps/web",
+      "type": "nextjs",
+      "buildCommand": "npm run build",
+      "startCommand": "npm start",
+      "port": 3000,
+      "environment": {
+        "NODE_ENV": "production"
+      },
+      "platforms": {
+        "vercel": {
+          "recommended": true,
+          "buildCommand": "npm run build",
+          "startCommand": "npm start"
+        },
+        "railway": {
+          "recommended": true,
+          "buildCommand": "npm install && npm run build",
+          "startCommand": "npm start"
+        },
+        "render": {
+          "recommended": true,
+          "buildCommand": "npm install && npm run build",
+          "startCommand": "npm start"
+        }
+      }
+    },
+    "marketing": {
+      "name": "brand-style-cloner-marketing",
+      "path": "apps/marketing-site",
+      "type": "nextjs",
+      "buildCommand": "npm run build",
+      "startCommand": "npm start",
+      "port": 3001,
+      "environment": {
+        "NODE_ENV": "production"
+      },
+      "platforms": {
+        "vercel": {
+          "recommended": true,
+          "buildCommand": "npm run build",
+          "startCommand": "npm start"
+        },
+        "railway": {
+          "recommended": true,
+          "buildCommand": "npm install && npm run build",
+          "startCommand": "npm start"
+        },
+        "render": {
+          "recommended": true,
+          "buildCommand": "npm install && npm run build",
+          "startCommand": "npm start"
+        }
+      }
+    }
+  },
+  "deploymentStrategies": {
+    "vercel": {
+      "description": "Best for Next.js applications",
+      "steps": [
+        "Install Vercel CLI: npm i -g vercel",
+        "Deploy web app: cd apps/web && vercel --prod",
+        "Deploy marketing site: cd apps/marketing-site && vercel --prod",
+        "Deploy API separately to Railway/Render"
+      ]
+    },
+    "railway": {
+      "description": "Good for full-stack applications",
+      "steps": [
+        "Install Railway CLI: npm i -g @railway/cli",
+        "Login: railway login",
+        "Deploy all projects: railway up (from each app directory)"
+      ]
+    },
+    "render": {
+      "description": "Free tier available, good for all project types",
+      "steps": [
+        "Connect GitHub repo to Render",
+        "Create Web Services for each project",
+        "Configure build and start commands",
+        "Set environment variables"
+      ]
+    }
+  }
+} 
